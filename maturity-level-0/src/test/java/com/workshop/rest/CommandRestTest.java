@@ -1,24 +1,23 @@
 package com.workshop.rest;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -29,15 +28,20 @@ public class CommandRestTest {
 
     private RestTemplate restTemplate = new TestRestTemplate();
 
-    @Autowired UserService userService;
+    @Component
+    @Primary
+    static class UserServiceMock implements UserService {
+        @Override
+        public List<String> list() {
+            return Arrays.asList("John Snow");
+        }
 
-    @Before
-    public void addOneUser() {
-        userService.create("John Snow");
+        @Override
+        public void create(String user) {  }
     }
 
     @Test
-    public void f() throws URISyntaxException {
+    public void shouldReturnJohnSnowInListOfUsers() throws URISyntaxException {
         // given
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -49,3 +53,5 @@ public class CommandRestTest {
     }
 
 }
+
+
