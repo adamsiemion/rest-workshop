@@ -1,7 +1,7 @@
 package com.workshop.rest;
 
-import com.workshop.level0.MaturityLevel0Application;
-import com.workshop.level0.UserService;
+import com.workshop.level1.MaturityLevel1Application;
+import com.workshop.level1.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -22,7 +22,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = MaturityLevel0Application.class)
+@SpringApplicationConfiguration(classes = MaturityLevel1Application.class)
 @WebIntegrationTest
 public class CommandRestTest {
 

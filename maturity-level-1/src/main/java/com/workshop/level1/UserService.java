@@ -1,4 +1,4 @@
-package com.workshop.rest;
+package com.workshop.level1;
 
 import java.util.List;
 

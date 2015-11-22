@@ -1,4 +1,4 @@
-package com.workshop.rest;
+package com.workshop.level0;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

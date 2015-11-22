@@ -1,12 +1,12 @@
-package com.workshop.rest;
+package com.workshop.level1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MaturityLevel0Application {
+public class MaturityLevel1Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(MaturityLevel0Application.class, args);
+        SpringApplication.run(MaturityLevel1Application.class, args);
     }
 }

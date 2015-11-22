@@ -1,4 +1,4 @@
-package com.workshop.rest;
+package com.workshop.level0;
 
 public class Response {
 
