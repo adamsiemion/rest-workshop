@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CORS example</title>
+    <script>
+        function createCORSRequest(method, url) {
+            var xhr = new XMLHttpRequest();
+            if ("withCredentials" in xhr) {
+                // XHR for Chrome/Firefox/Opera/Safari.
+                xhr.open(method, url, true);
+            } else if (typeof XDomainRequest != "undefined") {
+                // XDomainRequest for IE.
+                xhr = new XDomainRequest();
+                xhr.open(method, url);
+            } else {
+                // CORS not supported.
+                xhr = null;
+            }
+            return xhr;
+        }
+
+        function makeCorsRequest(url) {
+            var xhr = this.createCORSRequest('GET', url);
+            if (!xhr) {
+                alert('CORS not supported');
+                return;
+            }
+
+            xhr.onload = function() {
+                alert('Response from CORS request to ' + url);
+            };
+
+            xhr.onerror = function() {
+                alert('Woops, there was an error making the request.');
+            };
+
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <p>
+        <a href="#" onclick="makeCorsRequest('http://localhost:8084/simple-no-cors-headers-in-response'); return false">
+            Make a simple CORS request to a method that does not return CORS response headers
+        </a>
+    </p>
+    <p>
+        <a href="#" onclick="makeCorsRequest('http://localhost:8084/simple-cors-headers-in-response'); return false">
+            Make a simple CORS request to a method that returns CORS response headers
+        </a>
+    </p>
+    <p>
+        <a href="#" onclick="makeCorsRequest('http://localhost:8084/simple-cors-cross-origin-annotation'); return false">
+            Make a simple CORS request to a method that uses the @CrossOrigin annotation
+        </a>
+    </p>
+</body>
+</html>
