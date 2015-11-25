@@ -12,5 +12,7 @@
     <modules>
         <module>maturity-level-0</module>
         <module>maturity-level-1</module>
+        <module>cors-frontend</module>
+        <module>cors-backend</module>
     </modules>
 </project>

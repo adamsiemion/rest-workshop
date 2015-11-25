@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>CORS example</title>
     <script>
-        function createCORSRequest(method, url) {
+        function createCorsRequest(method, url) {
             var xhr = new XMLHttpRequest();
             if ("withCredentials" in xhr) {
                 // XHR for Chrome/Firefox/Opera/Safari.
@@ -20,39 +20,57 @@
             return xhr;
         }
 
-        function makeCorsRequest(url) {
-            var xhr = this.createCORSRequest('GET', url);
+        function makeCorsGetRequest(method, url) {
+            var xhr = this.createCorsRequest(method, url);
             if (!xhr) {
                 alert('CORS not supported');
                 return;
             }
 
             xhr.onload = function() {
-                alert('Response from CORS request to ' + url);
+                alert('OK');
             };
 
             xhr.onerror = function() {
-                alert('Woops, there was an error making the request.');
+                alert('ERROR');
             };
 
             xhr.send();
+        }
+
+        function makeGetCorsRequest(url) {
+            makeCorsGetRequest('GET', url);
+        }
+
+        function makePutCorsRequest(url) {
+            makeCorsGetRequest('PUT', url);
         }
     </script>
 </head>
 <body>
     <p>
-        <a href="#" onclick="makeCorsRequest('http://localhost:8084/simple-no-cors-headers-in-response'); return false">
+        <a href="#" onclick="makeGetCorsRequest('http://localhost:8084/simple-no-cors-headers-in-response'); return false">
             Make a simple CORS request to a method that does not return CORS response headers
         </a>
     </p>
     <p>
-        <a href="#" onclick="makeCorsRequest('http://localhost:8084/simple-cors-headers-in-response'); return false">
+        <a href="#" onclick="makeGetCorsRequest('http://localhost:8084/simple-cors-headers-in-response'); return false">
             Make a simple CORS request to a method that returns CORS response headers
         </a>
     </p>
     <p>
-        <a href="#" onclick="makeCorsRequest('http://localhost:8084/simple-cors-cross-origin-annotation'); return false">
+        <a href="#" onclick="makeGetCorsRequest('http://localhost:8084/simple-cors-cross-origin-annotation'); return false">
             Make a simple CORS request to a method that uses the @CrossOrigin annotation
+        </a>
+    </p>
+    <p>
+        <a href="#" onclick="makePutCorsRequest('http://localhost:8084/not-simple-no-options-defined'); return false">
+            Make a not simple CORS request to a method that does not have an OPTIONS method defined
+        </a>
+    </p>
+    <p>
+        <a href="#" onclick="makePutCorsRequest('http://localhost:8084/not-simple-options-defined'); return false">
+            Make a not simple CORS request to a method that has an OPTIONS method defined
         </a>
     </p>
 </body>
