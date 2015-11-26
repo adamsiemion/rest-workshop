@@ -14,6 +14,14 @@ public class CommandRest {
 
     @Autowired private UserService userService;
 
+    /**
+     * Sample usage:
+     *
+     * {"method":"listUsers","arguments":[]}
+     *
+     * @param command
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     public Response execute(@RequestBody Command command) {
         if("listUsers".equals(command.getMethod())) {
