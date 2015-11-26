@@ -21,7 +21,7 @@ public class UsersRest {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void create(User newUser) {
+    public void create(@RequestBody final User newUser) {
         userService.create(newUser);
     }
 
