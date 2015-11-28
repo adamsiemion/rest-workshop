@@ -12,7 +12,7 @@ public class UserRestClient {
         final User newUser = new User("John Snow");
         final String id = restTemplate.postForObject("http://localhost:8021/users", newUser, String.class);
 
-        final User createdUser = restTemplate.getForObject("http://localhost:8021/users/" + id, User.class);
+        final User createdUser = restTemplate.getForObject("http://localhost:8021/users/{id}", User.class, id);
         System.out.println(createdUser.getName());
     }
 }
