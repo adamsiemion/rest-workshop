@@ -31,13 +31,13 @@ public class BooksRestTest {
         // given
         RestTemplate restTemplate = new TestRestTemplate();
         // when
-        String book = restTemplate.getForObject("http://localhost:8101/books/3", String.class);
+        String book = restTemplate.getForObject("http://localhost:8101/books/1", String.class);
         // then
         assertEquals("{\"id\":3,\"name\":\"REST\"}", book);
     }
 
     @Test
-    public void shouldReturnBooks() throws URISyntaxException {
+    public void shouldReturnBooks() {
         // given
         RestTemplate restTemplate = new TestRestTemplate();
         // when

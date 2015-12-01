@@ -3,6 +3,7 @@ package com.workshop.rest;
 public class Book {
     private Integer id;
     private String name;
+    private boolean active = true;
 
     Book() {}
 
@@ -10,6 +11,13 @@ public class Book {
         this.id = id;
         this.name = name;
     }
+
+    public Book(Integer id, String name, boolean active) {
+        this.id = id;
+        this.name = name;
+        this.active = active;
+    }
+
 
     public Book(String name) {
         this.name = name;
@@ -31,6 +39,13 @@ public class Book {
         this.name = name;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     @Override
     public boolean equals(Object o) {
