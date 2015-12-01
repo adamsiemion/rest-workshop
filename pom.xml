@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>books-rest</module>
         <module>cors-backend</module>
         <module>cors-frontend</module>
         <module>error-handling</module>
