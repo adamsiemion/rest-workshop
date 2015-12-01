@@ -10,9 +10,16 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>cors-backend</module>
+        <module>cors-frontend</module>
+        <module>error-handling</module>
         <module>maturity-level-0</module>
         <module>maturity-level-1</module>
-        <module>cors-frontend</module>
-        <module>cors-backend</module>
+        <module>maturity-level-2</module>
+        <module>maturity-level-3</module>
+        <module>rest-client</module>
+        <module>rest-versioning</module>
+        <module>security-http-basic</module>
+        <module>security-stormpath</module>
     </modules>
 </project>
