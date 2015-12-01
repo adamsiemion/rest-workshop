@@ -1,4 +1,4 @@
-package com.workshop.level0;
+package com.workshop.rest.level0;
 
 import org.springframework.stereotype.Component;
 

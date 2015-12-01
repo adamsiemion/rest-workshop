@@ -1,7 +1,5 @@
-package com.workshop.rest;
+package com.workshop.rest.level0;
 
-import com.workshop.level0.UserService;
-import com.workshop.level0.UserServiceImpl;
 import org.junit.Test;
 
 import java.util.List;
