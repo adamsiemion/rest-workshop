@@ -2,15 +2,16 @@ package com.workshop.rest.cors.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.http.HttpServletResponse;
 
 @SpringBootApplication
 @RestController
 public class CorsBackendApplication {
-
     @RequestMapping("/simple-no-cors-headers-in-response")
     String simpleNoCorsHeadersInResponse() {
         return "Hello!";

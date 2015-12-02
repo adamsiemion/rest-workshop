@@ -1,19 +1,21 @@
 package com.workshop.rest;
 
-public class Book {
-    private Integer id;
+import org.springframework.hateoas.ResourceSupport;
+
+public class Book extends ResourceSupport {
+    private Integer bookid;
     private String name;
     private boolean active = true;
 
     Book() {}
 
-    public Book(Integer id, String name) {
-        this.id = id;
+    public Book(Integer bookid, String name) {
+        this.bookid = bookid;
         this.name = name;
     }
 
-    public Book(Integer id, String name, boolean active) {
-        this.id = id;
+    public Book(Integer bookid, String name, boolean active) {
+        this.bookid = bookid;
         this.name = name;
         this.active = active;
     }
@@ -23,12 +25,12 @@ public class Book {
         this.name = name;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getBookid() {
+        return bookid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setBookid(Integer bookid) {
+        this.bookid = bookid;
     }
 
     public String getName() {
@@ -54,14 +56,14 @@ public class Book {
 
         Book book = (Book) o;
 
-        if (!id.equals(book.id)) return false;
+        if (!bookid.equals(book.bookid)) return false;
         return name.equals(book.name);
 
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
+        int result = bookid.hashCode();
         result = 31 * result + name.hashCode();
         return result;
     }
