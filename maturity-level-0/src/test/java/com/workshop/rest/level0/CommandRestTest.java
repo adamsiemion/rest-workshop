@@ -39,13 +39,13 @@ public class CommandRestTest {
     }
 
     @Test
-    public void shouldReturnJohnSnowInListOfUsers() throws URISyntaxException {
+    public void shouldReturnJohnSnowInListOfUsers() {
         // given
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity entity = new HttpEntity<>("{\"method\":\"listUsers\"}", headers);
         // when
-        final String result = restTemplate.postForObject("http://localhost:8888/rest", entity, String.class);
+        final String result = restTemplate.postForObject("http://localhost:7001/rest", entity, String.class);
         // then
         assertEquals("{\"result\":\"John Snow\"}", result);
     }
